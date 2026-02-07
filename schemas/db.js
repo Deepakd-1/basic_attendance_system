@@ -1,6 +1,6 @@
 import mongoose, { Mongoose } from "mongoose";
 
-export const studentSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
     email : {type: String, unique: true},
     password : String,
     fullName: String,
@@ -9,7 +9,7 @@ export const studentSchema = new mongoose.Schema({
 });
 
 
-export const attendaceSummary = new mongoose.Schema({
+const attendaceSummary = new mongoose.Schema({
     name: String,
     vid: Number,
     totalClasses: Number,
@@ -44,12 +44,16 @@ export const attendaceSummary = new mongoose.Schema({
 });
 
 
-export const teacherSchema = new Mongoose.Schema({
+const teacherSchema = new Mongoose.Schema({
     email: String,
     password: String,
     fullName: String,
     uid: {type: Number, unique: true}
 })
+
+export const Student = mongoose.model('Student', studentSchema);
+export const Teacher = mongoose.model('Teacher', teacherSchema);
+export const Attendance = mongoose.model("Attendance", attendaceSummary);
 
 
 
